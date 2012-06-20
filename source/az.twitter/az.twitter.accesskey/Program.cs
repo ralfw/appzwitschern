@@ -6,7 +6,7 @@ namespace az.twitter.accesskey
     internal class Program
     {
         private static void Main(string[] args) {
-            var twitter = new Twitter("UZMoA54gkfW4Csrn4FOCQ", "sQywJpTP5ZNve59r2wgUWOwShgPfDmWzhvWlhbTiBM");
+            var twitter = new Twitter(TokenRepository.LoadFrom("twitter.consumer.token.txt"));
 
             var url = twitter.GetAuthorizationUrl();
             Console.WriteLine(url);
@@ -18,9 +18,12 @@ namespace az.twitter.accesskey
 
             var accessToken = twitter.GetAccessToken(pin);
             Console.Write("Access key:     ");
-            Console.WriteLine(accessToken.AccessKey);
+            Console.WriteLine(accessToken.Key);
             Console.Write("Access secret: ");
-            Console.WriteLine(accessToken.AccessSecret);
+            Console.WriteLine(accessToken.Secret);
+
+            TokenRepository.SaveTo("twitter.access.token.txt", accessToken);
+            Console.WriteLine("Token gespeichert in twitter.access.token.txt");
 
             Console.WriteLine("Mit Enter beenden...");
             Console.ReadLine();

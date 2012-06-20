@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Windows;
+using npantarhei.runtime;
 
 namespace az.application
 {
@@ -14,7 +15,12 @@ namespace az.application
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            MessageBox.Show("hello");
+            var config = new FlowRuntimeConfiguration();
+
+            using(var fr = new FlowRuntime(config))
+            {
+                
+            }
         }
     }
 }

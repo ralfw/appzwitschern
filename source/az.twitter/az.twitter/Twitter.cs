@@ -5,19 +5,18 @@ namespace az.twitter
 {
     public class Twitter
     {
-        private readonly string consumerKey;
-        private readonly string consumerSecret;
+        private Token consumerToken;
         private OAuthTokenResponse requestToken;
 
-        public Twitter(string consumerKey, string consumerSecret) {
-            this.consumerKey = consumerKey;
-            this.consumerSecret = consumerSecret;
+        public Twitter(Token consumerToken)
+        {
+            this.consumerToken = consumerToken;
         }
 
         public void SendMessage(string message, string accessToken, string accessTokenSecret) {   
             var tokens = new OAuthTokens {
-                ConsumerKey = consumerKey,
-                ConsumerSecret = consumerSecret,
+                ConsumerKey = consumerToken.Key,
+                ConsumerSecret = consumerToken.Secret,
                 AccessToken = accessToken,
                 AccessTokenSecret = accessTokenSecret
             };
@@ -29,24 +28,17 @@ namespace az.twitter
         }
 
         public string GetAuthorizationUrl() {
-            requestToken = OAuthUtility.GetRequestToken(consumerKey, consumerSecret, "oob");
+            requestToken = OAuthUtility.GetRequestToken(consumerToken.Key, consumerToken.Secret, "oob");
             var authorizationUri = OAuthUtility.BuildAuthorizationUri(requestToken.Token);
             return authorizationUri.AbsoluteUri;
         }
 
-        public AccessToken GetAccessToken(string pin) {
-            var accessToken = OAuthUtility.GetAccessToken(consumerKey, consumerSecret, requestToken.Token, pin);
-            return new AccessToken {
-                AccessKey = accessToken.Token,
-                AccessSecret = accessToken.TokenSecret
+        public Token GetAccessToken(string pin) {
+            var accessToken = OAuthUtility.GetAccessToken(consumerToken.Key, consumerToken.Secret, requestToken.Token, pin);
+            return new Token {
+                Key = accessToken.Token,
+                Secret = accessToken.TokenSecret
             };
         }
-    }
-
-    public class AccessToken
-    {
-        public string AccessKey { get; set; }
-
-        public string AccessSecret { get; set; }
     }
 }

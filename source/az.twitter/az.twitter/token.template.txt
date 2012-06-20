@@ -1,0 +1,4 @@
+﻿key
+secret
+
+// for consumer and access tokens

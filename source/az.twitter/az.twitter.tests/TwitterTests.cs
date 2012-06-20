@@ -11,7 +11,7 @@ namespace az.twitter.tests
 
         [SetUp]
         public void Setup() {
-            twitter = new Twitter("UZMoA54gkfW4Csrn4FOCQ", "sQywJpTP5ZNve59r2wgUWOwShgPfDmWzhvWlhbTiBM");
+            twitter = new Twitter(TokenRepository.LoadFrom("twitter.consumer.token.txt"));
         }
 
         [Test, Explicit]
