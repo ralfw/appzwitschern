@@ -36,7 +36,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>az.application.App</StartupObject>
+    <StartupObject>az.application.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="az.gui, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
@@ -61,14 +61,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Program.cs" />
     <Compile Include="TwitterOperations.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -89,7 +82,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="flows.flow" />
+    <EmbeddedResource Include="flows.flow" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -97,14 +90,14 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="..\..\..\unversioned\twitter.access.token.txt">
+    <None Include="..\..\..\unversioned\twitter.access.token.txt">
       <Link>twitter.access.token.txt</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="..\..\..\unversioned\twitter.consumer.token.txt">
+    </None>
+    <None Include="..\..\..\unversioned\twitter.consumer.token.txt">
       <Link>twitter.consumer.token.txt</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
