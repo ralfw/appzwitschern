@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "az.gui", "az.gui\az.gui.csproj", "{9EE53ACB-E089-47EF-9827-F4D927F28FC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "az.gui.tests", "az.gui.tests\az.gui.tests.csproj", "{AA8E663C-CF98-4AF4-A388-DB585299AFFC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9EE53ACB-E089-47EF-9827-F4D927F28FC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EE53ACB-E089-47EF-9827-F4D927F28FC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EE53ACB-E089-47EF-9827-F4D927F28FC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EE53ACB-E089-47EF-9827-F4D927F28FC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA8E663C-CF98-4AF4-A388-DB585299AFFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA8E663C-CF98-4AF4-A388-DB585299AFFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA8E663C-CF98-4AF4-A388-DB585299AFFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA8E663C-CF98-4AF4-A388-DB585299AFFC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
