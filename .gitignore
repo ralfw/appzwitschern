@@ -7,3 +7,6 @@ obj/
 *.userprefs
 *ReSharper*
 test-results/
+*.ncrunchsolution
+*.ncrunchsolution.user
+*.DotSettings.user
