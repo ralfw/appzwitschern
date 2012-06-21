@@ -4,6 +4,7 @@ using System.Windows;
 using az.contracts;
 using az.gui;
 using az.security;
+using az.serialization;
 using az.sqsapi;
 using az.twitterapi;
 using npantarhei.runtime;
@@ -26,7 +27,7 @@ namespace az.application
                 .AddStreamsFrom("az.application.flows.flow", Assembly.GetExecutingAssembly())
                 .AddFunc<Versandauftrag, Versandauftrag>("versandauftrag_schnueren", twitterops.Versandauftrag_um_access_token_erweitern)
                 .AddFunc<Versandauftrag, string>("serialisieren", serialisieren.Serialize)
-                .AddOperation(enqueue)
+                .AddAction<string>("enqueue", sqs.Enqueue)
                 .AddAction("versandstatus_anzeigen", () => gui.Versandstatus("Versendet!")).MakeSync();
 
             using (var fr = new FlowRuntime(config)) {
