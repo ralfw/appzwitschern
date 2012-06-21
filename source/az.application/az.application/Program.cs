@@ -33,7 +33,7 @@ namespace az.application
 
                 gui.Versenden += fr.CreateEventProcessor<string>(".versenden");
 
-                var app = new System.Windows.Application {MainWindow = gui};
+                var app = new Application {MainWindow = gui};
                 app.Run(gui);
             }
         }
