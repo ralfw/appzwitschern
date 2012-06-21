@@ -27,7 +27,7 @@ namespace az.application
                 .AddStreamsFrom("az.application.flows.flow", Assembly.GetExecutingAssembly())
                 .AddFunc<Versandauftrag, Versandauftrag>("versandauftrag_schnueren", twitterops.Versandauftrag_um_access_token_erweitern)
                 .AddFunc<Versandauftrag, string>("serialisieren", serialisieren.Serialize)
-                .AddAction<string>("enqueue", sqs.Enqueue)
+                .AddAction<string>("enqueue", sqs.Enqueue, true)
                 .AddAction("versandstatus_anzeigen", () => gui.Versandstatus("Versendet!")).MakeSync();
 
             using (var fr = new FlowRuntime(config)) {
