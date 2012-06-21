@@ -5,7 +5,7 @@ namespace az.twitterapi
 {
     public class Twitter
     {
-        private Token consumerToken;
+        private readonly Token consumerToken;
         private OAuthTokenResponse requestToken;
 
         public Twitter(Token consumerToken)

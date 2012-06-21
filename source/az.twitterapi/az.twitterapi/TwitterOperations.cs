@@ -1,6 +1,6 @@
 ﻿using az.twitterapi;
 
-namespace az.application
+namespace az.twitterapi
 {
     public class TwitterOperations
     {
