@@ -2,6 +2,8 @@
 using Amazon.SQS.Model;
 using az.security;
 using npantarhei.runtime.contract;
+using npantarhei.runtime.messagetypes;
+using Message = npantarhei.runtime.messagetypes.Message;
 
 namespace az.sqsapi
 {
@@ -14,6 +16,7 @@ namespace az.sqsapi
         {
             if (_queueUrl == null) Create_queue();
             Enqueue_message((string)input.Data);
+            continueWith(new Message(base.Name, null));
         }
 
         private void Enqueue_message(string data)

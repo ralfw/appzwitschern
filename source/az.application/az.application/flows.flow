@@ -1,4 +1,5 @@
 /
 .versenden, versandauftrag_schnueren
-versandauftrag_schnueren, versenden
-versenden, versandstatus_anzeigen
+versandauftrag_schnueren, serialisieren
+serialisieren, enqueue
+enqueue, versandstatus_anzeigen
