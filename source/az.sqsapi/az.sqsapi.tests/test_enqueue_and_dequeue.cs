@@ -1,7 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
 using az.security;
-using npantarhei.runtime.messagetypes;
 
 namespace az.sqsapi.tests
 {
@@ -21,7 +20,7 @@ namespace az.sqsapi.tests
                 sqs.Enqueue("many " + i + " " + DateTime.Now);
             }
 
-            sqs.Dequeue(Console.WriteLine, () => Console.WriteLine("END OF DATA!"));
+            sqs.Dequeue(Console.WriteLine);
         }
     }
 }

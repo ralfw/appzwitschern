@@ -3,9 +3,6 @@ using Amazon;
 using Amazon.SQS;
 using Amazon.SQS.Model;
 using az.security;
-using npantarhei.runtime.contract;
-using npantarhei.runtime.patterns;
-using Message = npantarhei.runtime.messagetypes.Message;
 
 namespace az.sqsapi
 {
@@ -15,59 +12,51 @@ namespace az.sqsapi
         private readonly string _queueName;
         protected string _queueUrl;
 
-        public SQSOperations(string queueName, Token awsCredentials)
-        {
+        public SQSOperations(string queueName, Token awsCredentials) {
             _queueName = queueName;
             _sqs = AWSClientFactory.CreateAmazonSQSClient(awsCredentials.Key, awsCredentials.Secret);
         }
 
+        public void Enqueue(string data) {
+            if (_queueUrl == null) {
+                Create_queue();
+            }
 
-        public void Enqueue(string data)
-        {
-            if (_queueUrl == null) Create_queue();
-
-            var sendMessageRequest = new SendMessageRequest
-            {
+            var sendMessageRequest = new SendMessageRequest {
                 QueueUrl = _queueUrl,
                 MessageBody = data
             };
             _sqs.SendMessage(sendMessageRequest);
         }
 
-
-        public void Dequeue(Action<string> onDataReceived, Action onDataProcessed)
-        {
-            if (_queueUrl == null) Create_queue();
+        public void Dequeue(Action<string> onDataReceived) {
+            if (_queueUrl == null) {
+                Create_queue();
+            }
 
             var n_messages_received = 0;
-            do
-            {
+            do {
                 n_messages_received = 0;
 
                 var receiveMessageResponse = _sqs.ReceiveMessage(new ReceiveMessageRequest { QueueUrl = _queueUrl, MaxNumberOfMessages = 10 });
                 var receiveMessageResult = receiveMessageResponse.ReceiveMessageResult;
-                foreach (var message in receiveMessageResult.Message)
-                {
+                foreach (var message in receiveMessageResult.Message) {
                     onDataReceived(message.Body);
                     Delete_message(message.ReceiptHandle);
                     n_messages_received++;
                 }
             } while (n_messages_received > 0);
 
-            onDataProcessed();
+            onDataReceived(null);
         }
 
-
-        private void Create_queue()
-        {
-            var createQueueResponse = _sqs.CreateQueue(new CreateQueueRequest {QueueName = _queueName});
+        private void Create_queue() {
+            var createQueueResponse = _sqs.CreateQueue(new CreateQueueRequest { QueueName = _queueName });
             _queueUrl = createQueueResponse.CreateQueueResult.QueueUrl;
         }
 
-        private void Delete_message(string receiptHandle)
-        {
-            var deleteRequest = new DeleteMessageRequest
-            {
+        private void Delete_message(string receiptHandle) {
+            var deleteRequest = new DeleteMessageRequest {
                 QueueUrl = _queueUrl,
                 ReceiptHandle = receiptHandle
             };

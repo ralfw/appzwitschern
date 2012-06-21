@@ -13,6 +13,9 @@ namespace az.serialization
         }
 
         public T Deserialize(string serialized) {
+            if (serialized == null) {
+                return default(T);
+            }
             var serializer = new JsonSerializer();
             var stringReader = new StringReader(serialized);
             return (T)serializer.Deserialize(stringReader, typeof(T));
