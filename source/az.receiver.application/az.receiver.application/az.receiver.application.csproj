@@ -52,7 +52,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="root.flow" />
+    <EmbeddedResource Include="root.flow" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\..\..\unversioned\aws.credentials.txt">
