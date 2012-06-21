@@ -1,0 +1,6 @@
+﻿/
+.start, load
+load.out0, filter
+load.out1, .exit
+filter, versenden
+versenden, delete

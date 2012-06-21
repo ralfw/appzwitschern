@@ -39,6 +39,7 @@
     <StartupObject>az.application.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="az.contracts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="az.gui, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="az.security, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="az.serialization, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
