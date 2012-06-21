@@ -11,3 +11,5 @@ test-results/
 *.ncrunchsolution
 *.ncrunchsolution.user
 *.DotSettings.user
+*.fbl7
+*.fbpInf
