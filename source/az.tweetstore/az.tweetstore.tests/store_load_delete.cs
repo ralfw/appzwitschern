@@ -20,21 +20,23 @@ namespace az.tweetstore.tests
             var repo = new Repository(TEST_REPO_PATH);
 
             var va = new Versandauftrag() { Text = "a", Termin = new DateTime(2012, 6, 21), Id = Guid.NewGuid().ToString() };
-            repo.Store(va);
-
+            repo.Store(va, null);
+            var endOfStream = false;
             va = new Versandauftrag() { Text = "b", Termin = new DateTime(2012, 6, 20), Id = Guid.NewGuid().ToString() };
-            repo.Store(va);
+            repo.Store(va, null);
+            repo.Store(null, () => endOfStream = true);
+            Assert.IsTrue(endOfStream);
+            endOfStream = false;
 
             var results = new List<Versandauftrag>();
-            var endOfLoad = false;
-            repo.Load(results.Add, () => endOfLoad = true);
+            repo.Load(results.Add);
 
-            Assert.That(results.Select(r => r.Text).ToArray(), Is.EquivalentTo(new[] { "a", "b" }));
-            Assert.IsTrue(endOfLoad);
+            Assert.That(results.Select(r => r == null ? null : r.Text).ToArray(), Is.EquivalentTo(new[] { "a", "b", null }));
 
-            results.ForEach(r => repo.Delete(r.Id));
+            results.ForEach(r => repo.Delete(r == null ? null : r.Id, () => endOfStream = true));
 
             Assert.AreEqual(0, Directory.GetFiles(TEST_REPO_PATH).Length);
+            Assert.IsTrue(endOfStream);
 
             Directory.Delete(TEST_REPO_PATH);
         }

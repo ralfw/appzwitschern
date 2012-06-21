@@ -22,14 +22,19 @@ namespace az.tweetstore
         }
 
 
-        public void Store(Versandauftrag versandauftrag)
+        public void Store(Versandauftrag versandauftrag, Action onEndOfStream)
         {
-            var data = _serialization.Serialize(versandauftrag);
-            File.WriteAllText(Build_filename(versandauftrag.Id), data);
+            if (versandauftrag != null)
+            {
+                var data = _serialization.Serialize(versandauftrag);
+                File.WriteAllText(Build_filename(versandauftrag.Id), data);
+            }
+            else
+                onEndOfStream();
         }
 
 
-        public void Load(Action<Versandauftrag> onLoaded, Action onEndOfLoad)
+        public void Load(Action<Versandauftrag> onLoaded)
         {
             foreach(var filename in Directory.GetFiles(_repoFolderPath))
             {
@@ -37,13 +42,16 @@ namespace az.tweetstore
                 var versandauftrag = _serialization.Deserialize(data);
                 onLoaded(versandauftrag);
             }
-            onEndOfLoad();
+            onLoaded(null);
         }
 
 
-        public void Delete(string versandauftragId)
+        public void Delete(string versandauftragId, Action onEndOfStream)
         {
-            File.Delete(Build_filename(versandauftragId));
+            if (versandauftragId != null)
+                File.Delete(Build_filename(versandauftragId));
+            else
+                onEndOfStream();
         }
 
         

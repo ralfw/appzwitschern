@@ -1,5 +1,5 @@
 /
 .start, dequeue
-dequeue.out0, deserialize
-dequeue.out1, .exit
+dequeue, deserialize
 deserialize, speichern
+speichern, .exit
