@@ -13,16 +13,15 @@ namespace az.sqsapi.tests
         [Test, Explicit]
         public void Run() {
             var credentials = TokenRepository.LoadFrom("aws.credentials.txt");
-            var enqueue = new SQSEnqueue(QUEUE_NAME, credentials);
-            var dequeue = new SQSDequeue(QUEUE_NAME, credentials);
+            var sqs = new SQSOperations(QUEUE_NAME, credentials);
 
-            enqueue.Implementation(new Message("x", "hello " + DateTime.Now), null, null);
-            enqueue.Implementation(new Message("x", "world " + DateTime.Now), null, null);
+            sqs.Enqueue("hello " + DateTime.Now);
+            sqs.Enqueue("world " + DateTime.Now);
             for (var i = 0; i < 23; i++) {
-                enqueue.Implementation(new Message("x", "world " + i + " " + DateTime.Now), null, null);
+                sqs.Enqueue("many " + i + " " + DateTime.Now);
             }
 
-            dequeue.Implementation(new Message("x", null), _ => Console.WriteLine(_.Data), null);
+            sqs.Dequeue(Console.WriteLine, () => Console.WriteLine("NO DATA!"));
         }
     }
 }
