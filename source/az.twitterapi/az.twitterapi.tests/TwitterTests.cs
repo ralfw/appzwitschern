@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using NUnit.Framework;
 
-namespace az.twitter.tests
+namespace az.twitterapi.tests
 {
     [TestFixture]
     public class TwitterTests

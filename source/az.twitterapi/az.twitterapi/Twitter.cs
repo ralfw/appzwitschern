@@ -1,7 +1,7 @@
 ﻿using System;
 using Twitterizer;
 
-namespace az.twitter
+namespace az.twitterapi
 {
     public class Twitter
     {
