@@ -40,9 +40,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="az.gui, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="az.twitter">
-      <HintPath>..\..\..\bin\az.twitter.dll</HintPath>
-    </Reference>
+    <Reference Include="az.twitterapi, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="npantarhei.runtime">
       <HintPath>..\..\..\lib\npantarhei.runtime.dll</HintPath>
     </Reference>
@@ -63,6 +61,7 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="TwitterOperations.cs" />
+    <Compile Include="Versandauftrag.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

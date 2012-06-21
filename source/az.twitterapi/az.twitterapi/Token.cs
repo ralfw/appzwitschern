@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace az.twitter
+namespace az.twitterapi
 {
     public static class TokenRepository
     {

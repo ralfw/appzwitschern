@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace az.twitter.accesskey
+namespace az.twitterapi.accesskey
 {
     internal class Program
     {

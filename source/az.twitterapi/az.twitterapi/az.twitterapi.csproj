@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{0C8BECDE-6325-49D4-9F71-60980EB68AA3}</ProjectGuid>
+    <ProjectGuid>{A3C9B2CC-A59D-4060-9D66-97CF41323315}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>az.twitter.tests</RootNamespace>
-    <AssemblyName>az.twitter.tests</AssemblyName>
+    <RootNamespace>az.twitterapi</RootNamespace>
+    <AssemblyName>az.twitterapi</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\..\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -31,8 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework">
-      <HintPath>..\..\..\lib\nunit.framework.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=4.0.5.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\lib\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -41,26 +41,17 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Twitterizer2, Version=2.4.1.17171, Culture=neutral, PublicKeyToken=69d1469eac671567, processorArchitecture=MSIL">
+      <HintPath>..\..\..\lib\Twitterizer2.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Token.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TwitterTests.cs" />
+    <Compile Include="Twitter.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\az.twitter\az.twitter.csproj">
-      <Project>{A3C9B2CC-A59D-4060-9D66-97CF41323315}</Project>
-      <Name>az.twitter</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="..\..\..\unversioned\twitter.access.token.txt">
-      <Link>twitter.access.token.txt</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\..\unversioned\twitter.consumer.token.txt">
-      <Link>twitter.consumer.token.txt</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="token.template.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

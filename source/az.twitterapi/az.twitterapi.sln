@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "az.twitter", "az.twitter\az.twitter.csproj", "{A3C9B2CC-A59D-4060-9D66-97CF41323315}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "az.twitterapi", "az.twitterapi\az.twitterapi.csproj", "{A3C9B2CC-A59D-4060-9D66-97CF41323315}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "az.twitter.tests", "az.twitter.tests\az.twitter.tests.csproj", "{0C8BECDE-6325-49D4-9F71-60980EB68AA3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "az.twitterapi.tests", "az.twitterapi.tests\az.twitterapi.tests.csproj", "{0C8BECDE-6325-49D4-9F71-60980EB68AA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "az.twitter.accesskey", "az.twitter.accesskey\az.twitter.accesskey.csproj", "{994B3C4B-9CF9-4C3C-BBCE-A3D01A8A70FC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "az.twitterapi.accesskey", "az.twitterapi.accesskey\az.twitterapi.accesskey.csproj", "{994B3C4B-9CF9-4C3C-BBCE-A3D01A8A70FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
