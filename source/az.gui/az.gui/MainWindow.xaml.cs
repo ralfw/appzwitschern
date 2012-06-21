@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using az.contracts;
 
 namespace az.gui
 {
@@ -8,10 +9,13 @@ namespace az.gui
         public MainWindow() {
             InitializeComponent();
 
-            btnSenden.Click += (o, e) => Versenden(txtTweetText.Text);
+            btnSenden.Click += (o, e) => Versenden(new Versandauftrag {
+                Text = txtTweetText.Text,
+                Termin = DateTime.Parse(txtTermin.Text)
+            });
         }
 
-        public event Action<string> Versenden;
+        public event Action<Versandauftrag> Versenden;
 
         public void Versandstatus(string message) {
             lblStatus.Text = message;

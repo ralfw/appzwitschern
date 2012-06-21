@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="az.contracts">
+      <HintPath>..\..\..\bin\az.contracts.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\..\..\lib\nunit.framework.dll</HintPath>
     </Reference>

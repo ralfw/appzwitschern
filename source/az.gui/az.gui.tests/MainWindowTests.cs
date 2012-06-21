@@ -9,7 +9,8 @@ namespace az.gui.tests
         [Test, Explicit, RequiresSTA]
         public void Event_wird_ausgelöst() {
             var mainWindow = new MainWindow();
-            mainWindow.Versenden += s => MessageBox.Show(s);
+            mainWindow.Versenden += versandauftrag => MessageBox.Show(
+                string.Format("'{0}' - um {1}", versandauftrag.Text, versandauftrag.Termin));
 
             mainWindow.ShowDialog();
         }
