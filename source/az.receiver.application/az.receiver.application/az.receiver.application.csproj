@@ -34,10 +34,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="az.contracts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="az.security, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="az.serialization, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="az.sqsapi, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="az.twitterapi, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="az.tweetstore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="npantarhei.runtime, Version=1.0.4555.27577, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>

@@ -19,7 +19,7 @@ namespace az.tweetstore.tests
 
             var repo = new Repository(TEST_REPO_PATH);
 
-            var va = new Versandauftrag() {Text = "a", Termin = new DateTime(2012,6,21), Id = Guid.NewGuid().ToString()};
+            var va = new Versandauftrag() { Text = "a", Termin = new DateTime(2012, 6, 21), Id = Guid.NewGuid().ToString() };
             repo.Store(va);
 
             va = new Versandauftrag() { Text = "b", Termin = new DateTime(2012, 6, 20), Id = Guid.NewGuid().ToString() };
@@ -29,7 +29,7 @@ namespace az.tweetstore.tests
             var endOfLoad = false;
             repo.Load(results.Add, () => endOfLoad = true);
 
-            Assert.That(results.Select(r => r.Text).ToArray(), Is.EquivalentTo(new[]{"a", "b"}));
+            Assert.That(results.Select(r => r.Text).ToArray(), Is.EquivalentTo(new[] { "a", "b" }));
             Assert.IsTrue(endOfLoad);
 
             results.ForEach(r => repo.Delete(r.Id));

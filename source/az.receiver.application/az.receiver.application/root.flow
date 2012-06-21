@@ -1,6 +1,5 @@
 /
 .start, dequeue
 dequeue.out0, deserialize
-dequeue.out1, .ready
-deserialize, versenden
-versenden, .ready
+dequeue.out1, .exit
+deserialize, speichern
