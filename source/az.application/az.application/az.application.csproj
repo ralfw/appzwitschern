@@ -40,6 +40,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="az.gui, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="az.security, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="az.serialization, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="az.sqsapi, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="az.twitterapi, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="npantarhei.runtime">
       <HintPath>..\..\..\lib\npantarhei.runtime.dll</HintPath>
@@ -87,12 +90,14 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\unversioned\twitter.access.token.txt">
-      <Link>twitter.access.token.txt</Link>
+    <None Include="..\..\..\unversioned\aws.credentials.txt">
+      <Link>aws.credentials.txt</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\..\..\unversioned\twitter.consumer.token.txt">
-      <Link>twitter.consumer.token.txt</Link>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\unversioned\twitter.access.token.txt">
+      <Link>twitter.access.token.txt</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
