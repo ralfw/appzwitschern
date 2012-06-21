@@ -5,7 +5,11 @@ namespace az.contracts
 {
     public class Versandauftrag
     {
-        public string Id { get; set; }
+        public Versandauftrag() {
+            Id = Guid.NewGuid().ToString();
+        }
+
+        public string Id { get; private set; }
         
         public string Text { get; set; }
 
