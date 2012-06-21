@@ -9,7 +9,7 @@ namespace az.contracts
             Id = Guid.NewGuid().ToString();
         }
 
-        public string Id { get; private set; }
+        public string Id { get; set; }
         
         public string Text { get; set; }
 
