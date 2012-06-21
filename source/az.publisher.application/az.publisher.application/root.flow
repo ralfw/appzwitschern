@@ -1,6 +1,6 @@
 ﻿/
 .start, load
-load, filter
-filter, versenden
+load, filtern
+filtern, versenden
 versenden, delete
 delete, .exit

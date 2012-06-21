@@ -11,6 +11,8 @@ namespace az.twitterapi
         }
 
         public string Versenden(Versandauftrag versandauftrag) {
+            if (versandauftrag == null) return null;
+
             var twitter = new Twitter(TokenRepository.LoadFrom("twitter.consumer.token.txt"));
 
             twitter.SendMessage(versandauftrag.Text, versandauftrag.Credentials.Key, versandauftrag.Credentials.Secret);
