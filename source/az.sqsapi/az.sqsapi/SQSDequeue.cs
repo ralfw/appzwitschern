@@ -1,5 +1,6 @@
 ﻿using System;
 using Amazon.SQS.Model;
+using az.security;
 using npantarhei.runtime.contract;
 using Message = npantarhei.runtime.messagetypes.Message;
 
@@ -7,8 +8,8 @@ namespace az.sqsapi
 {
     public class SQSDequeue : SQSBase
     {
-        public SQSDequeue(string queueName, AWSCredentials credentials) : this("SQSDequeue", queueName, credentials) {}
-        public SQSDequeue(string name, string queueName, AWSCredentials credentials) : base(name, queueName, credentials) {}
+        public SQSDequeue(string queueName, Token credentials) : this("SQSDequeue", queueName, credentials) {}
+        public SQSDequeue(string name, string queueName, Token credentials) : base(name, queueName, credentials) {}
 
         protected override void Process(IMessage input, Action<IMessage> continueWith, Action<FlowRuntimeException> unhandledException)
         {

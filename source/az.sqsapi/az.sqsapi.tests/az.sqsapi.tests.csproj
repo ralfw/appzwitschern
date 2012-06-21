@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="az.security">
+      <HintPath>..\..\..\bin\az.security.dll</HintPath>
+    </Reference>
     <Reference Include="npantarhei.runtime">
       <HintPath>..\..\..\lib\npantarhei.runtime.dll</HintPath>
     </Reference>
@@ -54,6 +57,12 @@
       <Project>{42F5F227-BA6A-4000-A8CD-F0E7049353D9}</Project>
       <Name>az.sqsapi</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\..\..\unversioned\aws.credentials.txt">
+      <Link>aws.credentials.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

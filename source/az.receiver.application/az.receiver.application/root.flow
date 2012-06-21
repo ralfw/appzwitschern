@@ -1,0 +1,5 @@
+﻿/
+.start, dequeue
+dequeue, deserialize
+deserialize, versenden
+versenden, .ready

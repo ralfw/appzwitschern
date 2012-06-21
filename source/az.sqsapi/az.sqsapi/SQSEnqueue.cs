@@ -1,13 +1,14 @@
 ﻿using System;
 using Amazon.SQS.Model;
+using az.security;
 using npantarhei.runtime.contract;
 
 namespace az.sqsapi
 {
     public class SQSEnqueue : SQSBase
     {
-        public SQSEnqueue(string queueName, AWSCredentials credentials) : this("SQSEnqueue", queueName, credentials) {}
-        public SQSEnqueue(string name, string queueName, AWSCredentials credentials) : base(name, queueName, credentials) {}
+        public SQSEnqueue(string queueName, Token credentials) : this("SQSEnqueue", queueName, credentials) {}
+        public SQSEnqueue(string name, string queueName, Token credentials) : base(name, queueName, credentials) {}
 
         protected override void Process(IMessage input, Action<IMessage> continueWith, Action<FlowRuntimeException> unhandledException)
         {

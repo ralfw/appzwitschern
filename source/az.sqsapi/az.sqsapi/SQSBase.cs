@@ -1,6 +1,7 @@
 using Amazon;
 using Amazon.SQS;
 using Amazon.SQS.Model;
+using az.security;
 using npantarhei.runtime.patterns;
 
 namespace az.sqsapi
@@ -11,10 +12,10 @@ namespace az.sqsapi
         private readonly string _queueName;
         protected string _queueUrl;
 
-        protected SQSBase(string name, string queueName, AWSCredentials awsCredentials) : base(name)
+        protected SQSBase(string name, string queueName, Token awsCredentials) : base(name)
         {
             _queueName = queueName;
-            _sqs = AWSClientFactory.CreateAmazonSQSClient(awsCredentials.AwsKey, awsCredentials.AwsSecret);
+            _sqs = AWSClientFactory.CreateAmazonSQSClient(awsCredentials.Key, awsCredentials.Secret);
         }
 
         protected void Create_queue()
