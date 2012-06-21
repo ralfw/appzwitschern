@@ -1,5 +1,6 @@
-﻿/
+/
 .start, dequeue
-dequeue, deserialize
+dequeue.out0, deserialize
+dequeue.out1, .ready
 deserialize, versenden
 versenden, .ready

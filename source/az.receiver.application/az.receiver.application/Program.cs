@@ -8,12 +8,12 @@ using npantarhei.runtime;
 
 namespace az.receiver.application
 {
-    internal class Program
+    internal static class Program
     {
         private static void Main(string[] args) {
             var frc = new FlowRuntimeConfiguration();
             frc.AddStreamsFrom("az.receiver.application.root.flow", Assembly.GetExecutingAssembly());
-            frc.AddOperation(new SQSDequeue("dequeue", "AppZwitschern", TokenRepository.LoadFrom("aws.credentials.txt")));
+            frc.AddAction<string>("dequeue", new SQSOperations("AppZwitschern", TokenRepository.LoadFrom("aws.credentials.txt")).Dequeue);
             frc.AddFunc<string, Versandauftrag>("deserialize", new Serialization<Versandauftrag>().Deserialize);
             frc.AddFunc<Versandauftrag, string>("versenden", new TwitterOperations().Versenden);
             
