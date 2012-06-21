@@ -9,10 +9,13 @@ namespace az.gui
         public MainWindow() {
             InitializeComponent();
 
-            btnSenden.Click += (o, e) => Versenden(new Versandauftrag {
-                Text = txtTweetText.Text,
-                Termin = DateTime.Parse(txtTermin.Text)
-            });
+            btnSenden.Click += (o, e) => {
+                lblStatus.Text = "";
+                Versenden(new Versandauftrag {
+                    Text = txtTweetText.Text,
+                    Termin = DateTime.Parse(txtTermin.Text)
+                });
+            };
         }
 
         public event Action<Versandauftrag> Versenden;
