@@ -1,12 +1,13 @@
-﻿using az.security;
-using az.twitterapi;
+﻿using az.contracts;
+using az.security;
 
 namespace az.twitterapi
 {
     public class TwitterOperations
     {
-        public Versandauftrag Versandauftrag_schnüren(string text) {
-            return new Versandauftrag(text, TokenRepository.LoadFrom("twitter.access.token.txt"));
+        public Versandauftrag Versandauftrag_um_access_token_erweitern(Versandauftrag versandauftrag) {
+            versandauftrag.Credentials = TokenRepository.LoadFrom("twitter.access.token.txt");
+            return versandauftrag;
         }
 
         public string Versenden(Versandauftrag versandauftrag) {
@@ -14,7 +15,7 @@ namespace az.twitterapi
 
             twitter.SendMessage(versandauftrag.Text, versandauftrag.Credentials.Key, versandauftrag.Credentials.Secret);
 
-            return "Versendet!";
+            return versandauftrag.Id;
         }
     }
 }
