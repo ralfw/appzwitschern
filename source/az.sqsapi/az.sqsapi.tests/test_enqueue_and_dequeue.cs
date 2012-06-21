@@ -21,7 +21,7 @@ namespace az.sqsapi.tests
                 sqs.Enqueue("many " + i + " " + DateTime.Now);
             }
 
-            sqs.Dequeue(Console.WriteLine, () => Console.WriteLine("NO DATA!"));
+            sqs.Dequeue(Console.WriteLine, () => Console.WriteLine("END OF DATA!"));
         }
     }
 }

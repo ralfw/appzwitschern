@@ -35,11 +35,10 @@ namespace az.sqsapi
         }
 
 
-        public void Dequeue(Action<string> onDataReceived, Action onNoDataAvailable)
+        public void Dequeue(Action<string> onDataReceived, Action onDataProcessed)
         {
             if (_queueUrl == null) Create_queue();
 
-            var total_messages_processed = 0;
             var n_messages_received = 0;
             do
             {
@@ -52,12 +51,10 @@ namespace az.sqsapi
                     onDataReceived(message.Body);
                     Delete_message(message.ReceiptHandle);
                     n_messages_received++;
-                    total_messages_processed++;
                 }
             } while (n_messages_received > 0);
 
-            if (total_messages_processed == 0)
-                onNoDataAvailable();
+            onDataProcessed();
         }
 
 

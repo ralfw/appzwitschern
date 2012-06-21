@@ -6,6 +6,7 @@ using System.Text;
 using System.Windows;
 using az.gui;
 using az.security;
+using az.sqsapi;
 using az.twitterapi;
 using npantarhei.runtime;
 using npantarhei.runtime.patterns;
@@ -19,7 +20,7 @@ namespace az.application
         {
             var twitterops = new TwitterOperations();
             var gui = new MainWindow();
-            var enqueue = new az.sqsapi.SQSEnqueue("enqueue", "AppZwitschern", TokenRepository.LoadFrom("aws.credentials.txt"));
+            var sqs = new SQSOperations("AppZwitschern", TokenRepository.LoadFrom("aws.credentials.txt"));
             var serialisieren = new az.serialization.Serialization<Versandauftrag>();
 
             FlowRuntimeConfiguration.SynchronizationFactory = () => new SyncWithWPFDispatcher();
@@ -29,7 +30,7 @@ namespace az.application
 
                 .AddFunc<string, Versandauftrag>("versandauftrag_schnueren", twitterops.Versandauftrag_schnüren)
                 .AddFunc<Versandauftrag, string>("serialisieren", serialisieren.Serialize)
-                .AddOperation(enqueue)
+                .AddAction<string>("enqueue", sqs.Enqueue, true)
                 .AddAction("versandstatus_anzeigen", () => gui.Versandstatus("Versendet!")).MakeSync();
 
             using (var fr = new FlowRuntime(config))
