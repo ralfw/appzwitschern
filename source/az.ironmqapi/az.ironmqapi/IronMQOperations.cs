@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using az.security;
 using io.iron.ironmq;
 
 namespace az.ironmqapi
@@ -11,9 +9,9 @@ namespace az.ironmqapi
         private readonly Client _client;
         private readonly Queue _queue;
 
-        public IronMQOperations(string queueName, string projectId, string token)
+        public IronMQOperations(string queueName, Token credentials)
         {
-            _client = new Client(projectId, token);
+            _client = new Client(credentials.Key, credentials.Secret);
             _queue = _client.queue(queueName);
         }
 
@@ -32,6 +30,7 @@ namespace az.ironmqapi
                 if (msg == null) break;
 
                 onDataReceived(msg.Body);
+
                 _queue.deleteMessage(msg);
             } while (true);
 

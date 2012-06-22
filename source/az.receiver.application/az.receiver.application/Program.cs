@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Reflection;
 using az.contracts;
+using az.ironmqapi;
 using az.security;
 using az.serialization;
-using az.sqsapi;
 using az.tweetstore;
 using npantarhei.runtime;
 
@@ -15,7 +15,8 @@ namespace az.receiver.application
             var frc = new FlowRuntimeConfiguration()
                        .AddStreamsFrom("az.receiver.application.root.flow", Assembly.GetExecutingAssembly())
 
-                       .AddAction<string>("dequeue", new SQSOperations("AppZwitschern", TokenRepository.LoadFrom("aws.credentials.txt")).Dequeue)
+                       .AddAction<string>("dequeue", new IronMQOperations("AppZwitschern", TokenRepository.LoadFrom("ironmq.credentials.txt")).Dequeue)
+                       
                        .AddFunc<string, Versandauftrag>("deserialize", new Serialization<Versandauftrag>().Deserialize)
                        .AddAction<Versandauftrag>("speichern", new Repository().Store);
             

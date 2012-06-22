@@ -14,7 +14,7 @@ namespace az.ironmqapi.tests
         public void Run()
         {
             var credentials = TokenRepository.LoadFrom("ironmq.credentials.txt");
-            var sut = new IronMQOperations("AppZwitschern", credentials.Key, credentials.Secret);
+            var sut = new IronMQOperations("AppZwitschern", credentials);
 
             sut.Enqueue("hello " + DateTime.Now);
             sut.Enqueue("world " + DateTime.Now);
