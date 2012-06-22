@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "az.tinyurlapi", "az.tinyurlapi\az.tinyurlapi.csproj", "{1844B89E-587D-4175-9D10-08ED400C5C7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "az.tinyurlapi.tests", "az.tinyurlapi.tests\az.tinyurlapi.tests.csproj", "{56A05EDE-B550-4DB5-BA45-24574ADB4ECF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1844B89E-587D-4175-9D10-08ED400C5C7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1844B89E-587D-4175-9D10-08ED400C5C7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1844B89E-587D-4175-9D10-08ED400C5C7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1844B89E-587D-4175-9D10-08ED400C5C7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56A05EDE-B550-4DB5-BA45-24574ADB4ECF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56A05EDE-B550-4DB5-BA45-24574ADB4ECF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56A05EDE-B550-4DB5-BA45-24574ADB4ECF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56A05EDE-B550-4DB5-BA45-24574ADB4ECF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
