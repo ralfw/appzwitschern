@@ -15,7 +15,7 @@ namespace az.publisher.application
             var frc = new FlowRuntimeConfiguration();
             frc.AddStreamsFrom("az.publisher.application.root.flow", Assembly.GetExecutingAssembly());
             frc.AddAction<Versandauftrag>("load", repository.Load);
-            frc.AddFunc<Versandauftrag, Versandauftrag>("filtern", _ => _);
+            frc.AddAction<Versandauftrag, Versandauftrag>("filtern", Program.Filtern);
             frc.AddFunc<Versandauftrag, string>("versenden", new TwitterOperations().Versenden);
             frc.AddAction<string>("delete", repository.Delete);
 
@@ -25,6 +25,13 @@ namespace az.publisher.application
                 fr.Process(".start");
                 fr.WaitForResult();
             }
+        }
+
+
+        private static void Filtern(Versandauftrag versandauftrag, Action<Versandauftrag> continueWith)
+        {
+            if (versandauftrag.Termin <= DateTime.Now)
+                continueWith(versandauftrag);
         }
     }
 }
