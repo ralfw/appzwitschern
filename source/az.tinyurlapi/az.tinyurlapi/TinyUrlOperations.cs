@@ -9,6 +9,17 @@ namespace az.tinyurlapi
 {
     public class TinyUrlOperations
     {
+        public Tuple<string,string>[] ShortenMany(IEnumerable<string> longUrls)
+        {
+            return longUrls.Select(longUrl =>
+                                       {
+                                           var shortUrl = Shorten(longUrl);
+                                           return new Tuple<string, string>(longUrl, shortUrl);
+                                       })
+                           .ToArray();
+        }
+
+
         public string Shorten(string longUrl)
         {
             var shortenRequest = string.Format(@"http://tinyurl.com/api-create.php?url={0}", longUrl);
