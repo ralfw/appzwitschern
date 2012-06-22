@@ -31,5 +31,11 @@ namespace az.gui.tests
             mainWindow.ShortenText += s => MessageBox.Show(s);
             mainWindow.ShowDialog();
         }
+
+        [Test, Explicit, RequiresSTA]
+        public void Anzahl_verbleibender_Zeichen() {
+            mainWindow.ShortenText += mainWindow.ShortenedText;
+            mainWindow.ShowDialog();
+        }
     }
 }

@@ -5,14 +5,18 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="3*" />
+            <RowDefinition Height="1*" />
             <RowDefinition Height="2*" />
             <RowDefinition Height="4*" />
         </Grid.RowDefinitions>
 
         <Border BorderThickness="1" BorderBrush="Black" Margin="0,0,0,5" >
-            <TextBox Name="txtTweetText" Grid.Row="0" />
+            <TextBox Name="txtTweetText" Grid.Row="0" AcceptsReturn="True" TextWrapping="Wrap" />
         </Border>
-        <Grid Grid.Row="1" >
+        
+        <TextBlock Name="txtZeichen" Grid.Row="1" />
+        
+        <Grid Grid.Row="2" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="3*" />    
                 <RowDefinition Height="2*"/>    

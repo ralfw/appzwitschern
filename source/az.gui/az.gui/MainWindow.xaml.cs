@@ -37,5 +37,10 @@ namespace az.gui
         public void Versandstatus(string message) {
             lblStatus.Text = message;
         }
+
+        public void ShortenedText(string text) {
+            txtTweetText.Text = text;
+            txtZeichen.Text = (140 - text.Length).ToString();
+        }
     }
 }
