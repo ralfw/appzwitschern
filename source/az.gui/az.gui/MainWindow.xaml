@@ -33,6 +33,6 @@
             <TextBlock Name="txtError" Grid.Row="1" Grid.Column="0" Foreground="Red" />
             <Button Name="btnSenden" Content="Senden" Grid.Column="1" />
         </Grid>
-        <TextBlock Name="lblStatus" Grid.Row="2" />
+        <TextBlock Name="lblStatus" Grid.Row="3" />
     </Grid>
 </Window>
