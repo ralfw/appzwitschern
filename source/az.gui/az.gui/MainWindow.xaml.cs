@@ -11,27 +11,36 @@ namespace az.gui
 
             var now = DateTime.Now;
             txtTermin.Text = now.ToShortDateString() + " " + now.ToShortTimeString();
+            btnSenden.Click += (o, e) => Senden();
+            txtTweetText.TextChanged += (o, e) => ShortenText(txtTweetText.Text);
+        }
 
-            btnSenden.Click += (o, e) => {
-                lblStatus.Text = "";
-                DateTime termin;
-                if (!DateTime.TryParse(txtTermin.Text, out termin)) {
-                    txtError.Text = "Fehlerhaftes Datumsformat";
-                    return;
-                }
+        private void Senden() {
+            lblStatus.Text = "";
+            DateTime termin;
+            if (!DateTime.TryParse(txtTermin.Text, out termin)) {
+                txtError.Text = "Fehlerhaftes Datumsformat";
+                return;
+            }
 
-                txtError.Text = "";
-                Versenden(new Versandauftrag {
-                    Text = txtTweetText.Text,
-                    Termin = termin
-                });
-            };
+            txtError.Text = "";
+            Versenden(new Versandauftrag {
+                Text = txtTweetText.Text,
+                Termin = termin
+            });
         }
 
         public event Action<Versandauftrag> Versenden;
 
+        public event Action<string> ShortenText;
+
         public void Versandstatus(string message) {
             lblStatus.Text = message;
+        }
+
+        public void ShortenedText(string text) {
+            txtTweetText.Text = text;
+            txtZeichen.Text = (140 - text.Length).ToString();
         }
     }
 }
