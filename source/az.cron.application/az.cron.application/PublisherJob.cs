@@ -9,10 +9,12 @@ namespace az.cron.application
     {
         public override void Execute() {
             var path = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
-            Log.Info(() => path);
-            var filename = Path.Combine(path, "az.publisher.application.exe");
-            Log.Info(() => filename);
-            Process.Start(filename);
+            var filename = Path.Combine(path, "az.receiver.application.exe");
+            var startInfo = new ProcessStartInfo {
+                WorkingDirectory = path,
+                FileName = filename
+            };
+            Process.Start(startInfo);
         }
     }
 }
