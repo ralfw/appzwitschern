@@ -30,7 +30,7 @@ namespace az.publisher.application
 
         private static void Filtern(Versandauftrag versandauftrag, Action<Versandauftrag> continueWith)
         {
-            if (versandauftrag.Termin <= DateTime.Now)
+            if (versandauftrag == null || versandauftrag.Termin <= DateTime.Now)
                 continueWith(versandauftrag);
         }
     }
