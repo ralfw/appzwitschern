@@ -22,6 +22,8 @@ namespace az.tinyurlapi
 
         public string Shorten(string longUrl)
         {
+            if (longUrl.ToLower().IndexOf("tinyurl.com") >= 0) return longUrl;
+
             var shortenRequest = string.Format(@"http://tinyurl.com/api-create.php?url={0}", longUrl);
             var request = WebRequest.Create(shortenRequest);
             var response = request.GetResponse();

@@ -36,12 +36,16 @@ namespace az.application
                 .AddFunc<Tuple<string, Tuple<string,string>[]>,string>("replace_urls", compressor.Replace_Urls)
                 .AddFunc<IEnumerable<string>, Tuple<String,string>[]>("shorten_urls", urlShortener.ShortenMany)
                 .AddOperation(new AutoResetJoin<string, Tuple<string,string>[]>("join"))
+                .AddOperation(new Throttle("throttle"))
+                .AddAction<string>("display_shortened_text", gui.ShortenedText).MakeSync()
                 .AddAction("versandstatus_anzeigen", () => gui.Versandstatus("Versendet!")).MakeSync();
 
             using (var fr = new FlowRuntime(config)) {
                 fr.UnhandledException += ex => MessageBox.Show(ex.InnerException.Message);
+                fr.Message += Console.WriteLine;
 
                 gui.Versenden += fr.CreateEventProcessor<Versandauftrag>(".versenden");
+                gui.ShortenText += fr.CreateEventProcessor<string>(".shortenText");
 
 
                 var app = new Application { MainWindow = gui };

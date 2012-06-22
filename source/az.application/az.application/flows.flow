@@ -4,8 +4,9 @@ versandauftrag_schnueren, serialisieren
 serialisieren, enqueue
 enqueue, versandstatus_anzeigen
 
-.shortenText, extract_urls
-.shortenText, join.in0
+.shortenText, throttle
+throttle, extract_urls
+throttle, join.in0
 extract_urls, shorten_urls
 shorten_urls, join.in1
 join, replace_urls
