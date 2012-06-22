@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "az.application", "az.application\az.application.csproj", "{5FAA203A-457E-4AA7-B094-C26F8F146EE3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "az.application.tests", "az.application.tests\az.application.tests.csproj", "{BB16E4BA-8764-4758-A907-D012AED6414A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +26,16 @@ Global
 		{5FAA203A-457E-4AA7-B094-C26F8F146EE3}.Release|Mixed Platforms.Build.0 = Release|x86
 		{5FAA203A-457E-4AA7-B094-C26F8F146EE3}.Release|x86.ActiveCfg = Release|x86
 		{5FAA203A-457E-4AA7-B094-C26F8F146EE3}.Release|x86.Build.0 = Release|x86
+		{BB16E4BA-8764-4758-A907-D012AED6414A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB16E4BA-8764-4758-A907-D012AED6414A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB16E4BA-8764-4758-A907-D012AED6414A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{BB16E4BA-8764-4758-A907-D012AED6414A}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{BB16E4BA-8764-4758-A907-D012AED6414A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BB16E4BA-8764-4758-A907-D012AED6414A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB16E4BA-8764-4758-A907-D012AED6414A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB16E4BA-8764-4758-A907-D012AED6414A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{BB16E4BA-8764-4758-A907-D012AED6414A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{BB16E4BA-8764-4758-A907-D012AED6414A}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

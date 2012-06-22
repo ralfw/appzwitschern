@@ -87,6 +87,7 @@
     <Reference Include="az.serialization">
       <HintPath>..\..\..\bin\az.serialization.dll</HintPath>
     </Reference>
+    <Reference Include="az.tinyurlapi, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="az.twitterapi">
       <HintPath>..\..\..\bin\az.twitterapi.dll</HintPath>
     </Reference>
@@ -109,6 +110,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
+    <Compile Include="TextCompressor.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
