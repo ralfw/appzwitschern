@@ -9,11 +9,21 @@ namespace az.gui
         public MainWindow() {
             InitializeComponent();
 
+            var now = DateTime.Now;
+            txtTermin.Text = now.ToShortDateString() + " " + now.ToShortTimeString();
+
             btnSenden.Click += (o, e) => {
                 lblStatus.Text = "";
+                DateTime termin;
+                if (!DateTime.TryParse(txtTermin.Text, out termin)) {
+                    txtError.Text = "Fehlerhaftes Datumsformat";
+                    return;
+                }
+
+                txtError.Text = "";
                 Versenden(new Versandauftrag {
                     Text = txtTweetText.Text,
-                    Termin = DateTime.Parse(txtTermin.Text)
+                    Termin = termin
                 });
             };
         }
