@@ -6,20 +6,29 @@ namespace az.gui.tests
     [TestFixture]
     public class MainWindowTests
     {
+        private MainWindow mainWindow;
+
+        [SetUp]
+        public void Setup() {
+            mainWindow = new MainWindow();
+        }
+
         [Test, Explicit, RequiresSTA]
         public void Event_wird_ausgelöst() {
-            var mainWindow = new MainWindow();
             mainWindow.Versenden += versandauftrag => MessageBox.Show(
                 string.Format("'{0}' - um {1}", versandauftrag.Text, versandauftrag.Termin));
-
             mainWindow.ShowDialog();
         }
 
         [Test, Explicit, RequiresSTA]
         public void Status_wird_gesetzt() {
-            var mainWindow = new MainWindow();
             mainWindow.Versandstatus("Success!");
+            mainWindow.ShowDialog();
+        }
 
+        [Test, Explicit, RequiresSTA]
+        public void ShortenText_feuert() {
+            mainWindow.ShortenText += s => MessageBox.Show(s);
             mainWindow.ShowDialog();
         }
     }

@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using NCron;
 
-namespace az.cron
+namespace az.cron.application
 {
     public class PublisherJob : CronJob
     {
