@@ -1,0 +1,25 @@
+hosting bei host europe
+
+tinyurlapi: auch bit.ly urls nicht kürzen.
+
+twitterapi, ironmqapi: credentials für dienste als ressourcen.
+- tokenrepo muss aus ressource lesen können
+
+receiver: nachrichten aus queue nur bei erfolgreicher speicherung löschen.
+
+mehr komponentenorientierung:
+- kontrakte für alle komponenten
+- alle applications mit einer IApplication klasse ausstatten (s. ansatz in publisher)
+- application klassen von hosts trennen
+
+hosts in eigene verzeichnisse bauen
+/bin -- hierhin bauen alle komponenten
+	/AppZwitschern
+		/WPFClient	-- hierhin baut az.application
+		/Server
+			/NCron	-- hierhin baut az.ncron.application
+				/Receiver	-- hierhin baut az.receiver.application
+				/Publisher	-- hierhin baut az.publisher.application
+			/TweetStore	-- wird auf dieser Ebene von Receiver angelegt und von Publisher erwartet
+
+gui/application: autorisierung bei twitter als dialog. credentials speichern.
