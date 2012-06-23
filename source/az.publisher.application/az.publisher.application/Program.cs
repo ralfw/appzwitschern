@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Reflection;
 using az.contracts;
 using az.tweetstore;
@@ -36,8 +37,7 @@ namespace az.publisher.application
 
         public void Run()
         {
-            using (var fr = new FlowRuntime(_config))
-            {
+            using (var fr = new FlowRuntime(_config)) {
                 fr.UnhandledException += e => Console.WriteLine(e.InnerException.Message);
 
                 fr.Process(".start");
