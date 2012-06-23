@@ -29,8 +29,14 @@ namespace az.tinyurlapi
             var response = request.GetResponse();
             using (var sr = new StreamReader(response.GetResponseStream()))
             {
-                return sr.ReadToEnd();
+                var shortUrl = sr.ReadToEnd();
+                return Short_url_only_if_shorter_than_long_url(longUrl, shortUrl);
             }
+        }
+
+        private static string Short_url_only_if_shorter_than_long_url(string longUrl, string shortUrl)
+        {
+            return shortUrl.Length < longUrl.Length ? shortUrl : longUrl;
         }
     }
 }

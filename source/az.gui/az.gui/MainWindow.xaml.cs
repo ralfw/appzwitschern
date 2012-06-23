@@ -6,13 +6,22 @@ namespace az.gui
 {
     public partial class MainWindow : Window
     {
+        private int _cursorPosition;
+        private bool _justUpdated;
+
         public MainWindow() {
             InitializeComponent();
 
             var now = DateTime.Now;
             txtTermin.Text = now.ToShortDateString() + " " + now.ToShortTimeString();
             btnSenden.Click += (o, e) => Senden();
-            txtTweetText.TextChanged += (o, e) => ShortenText(txtTweetText.Text);
+            txtTweetText.TextChanged += (o, e) =>
+                                            {
+                                                if (_justUpdated) {_justUpdated = false; return; }
+                                                
+                                                _cursorPosition = txtTweetText.SelectionStart;
+                                                ShortenText(txtTweetText.Text);
+                                            };
         }
 
         private void Senden() {
@@ -38,8 +47,12 @@ namespace az.gui
             lblStatus.Text = message;
         }
 
-        public void ShortenedText(string text) {
+        public void ShortenedText(string text)
+        {
+            _justUpdated = true;
             txtTweetText.Text = text;
+            txtTweetText.SelectionStart = _cursorPosition;
+
             txtZeichen.Text = (140 - text.Length).ToString();
         }
     }
