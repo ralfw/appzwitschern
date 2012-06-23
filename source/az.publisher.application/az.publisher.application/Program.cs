@@ -9,17 +9,35 @@ namespace az.publisher.application
 {
     internal class Program
     {
-        private static void Main(string[] args) {
-            var repository = new Repository();
+        private static void Main(string[] args)
+        {
+            var publisher = new Publisher(new Repository(), new TwitterOperations());
+            publisher.Run();
+        }
+    }
 
-            var frc = new FlowRuntimeConfiguration();
-            frc.AddStreamsFrom("az.publisher.application.root.flow", Assembly.GetExecutingAssembly());
-            frc.AddAction<Versandauftrag>("load", repository.Load);
-            frc.AddAction<Versandauftrag, Versandauftrag>("filtern", Program.Filtern);
-            frc.AddFunc<Versandauftrag, string>("versenden", new TwitterOperations().Versenden);
-            frc.AddAction<string>("delete", repository.Delete);
 
-            using(var fr = new FlowRuntime(frc)) {
+    class Publisher
+    {
+        private readonly FlowRuntimeConfiguration _config;
+
+        public Publisher(IRepository repository, ITwitterOperations twitterOperations)
+        {
+            _config = new FlowRuntimeConfiguration()
+                .AddStreamsFrom("az.publisher.application.root.flow", Assembly.GetExecutingAssembly())
+
+                .AddAction<Versandauftrag>("load", repository.Load)
+                .AddFunc<Versandauftrag, string>("versenden", twitterOperations.Versenden)
+                .AddAction<string>("delete", repository.Delete)
+
+                .AddAction<Versandauftrag, Versandauftrag>("filtern", this.Filtern);
+        }
+
+
+        public void Run()
+        {
+            using (var fr = new FlowRuntime(_config))
+            {
                 fr.UnhandledException += e => Console.WriteLine(e.InnerException.Message);
 
                 fr.Process(".start");
@@ -28,7 +46,7 @@ namespace az.publisher.application
         }
 
 
-        private static void Filtern(Versandauftrag versandauftrag, Action<Versandauftrag> continueWith)
+        private void Filtern(Versandauftrag versandauftrag, Action<Versandauftrag> continueWith)
         {
             if (versandauftrag == null || versandauftrag.Termin <= DateTime.Now)
                 continueWith(versandauftrag);

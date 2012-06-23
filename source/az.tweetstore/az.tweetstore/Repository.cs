@@ -8,7 +8,7 @@ using az.serialization;
 
 namespace az.tweetstore
 {
-    public class Repository
+    public class Repository : IRepository
     {
         private readonly string _repoFolderPath;
 

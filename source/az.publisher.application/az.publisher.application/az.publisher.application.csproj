@@ -68,7 +68,7 @@
     <Reference Include="az.contracts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="az.tweetstore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="az.twitterapi, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="npantarhei.runtime, Version=1.0.4555.27577, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="npantarhei.runtime, Version=1.0.4556.35760, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\lib\npantarhei.runtime.dll</HintPath>
     </Reference>
     <Reference Include="System" />

@@ -3,7 +3,7 @@ using az.security;
 
 namespace az.twitterapi
 {
-    public class TwitterOperations
+    public class TwitterOperations : ITwitterOperations
     {
         public Versandauftrag Versandauftrag_um_access_token_erweitern(Versandauftrag versandauftrag) {
             versandauftrag.Credentials = TokenRepository.LoadFrom("twitter.access.token.txt");
