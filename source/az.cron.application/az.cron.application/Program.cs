@@ -10,8 +10,8 @@ namespace az.cron.application
         }
 
         static void ServiceSetup(ISchedulingService service) {
-            service.At("*/1 * * * *").Run(() => new ReceiverJob());
-            service.At("*/1 * * * *").Run(() => new PublisherJob());
+            service.At("*/5 * * * *").Run(() => new ReceiverJob());
+            service.At("*/5 * * * *").Run(() => new PublisherJob());
         }
     }
 }
