@@ -1,1 +1,0 @@
-powershell .\psake.ps1
