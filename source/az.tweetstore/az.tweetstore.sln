@@ -5,6 +5,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "az.tweetstore", "az.tweetst
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "az.tweetstore.tests", "az.tweetstore.tests\az.tweetstore.tests.csproj", "{2454A529-8EA7-4D21-B6E6-3E2D4A2C909C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "az.tweetstore.ftp", "az.tweetstore.ftp\az.tweetstore.ftp.csproj", "{44E85AA6-2C80-4046-88E2-04F0A797319C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "local tweetstore", "local tweetstore", "{8145E8DC-8CA3-4BDD-96BE-7C3DA3486127}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ftp tweetstore", "ftp tweetstore", "{8C79C6CF-7975-439C-A6AE-F9637A394788}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "az.tweetstore.ftp.tests", "az.tweetstore.ftp.tests\az.tweetstore.ftp.tests.csproj", "{16545779-AFAB-4D20-895C-83F92F6E49C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,8 +27,22 @@ Global
 		{2454A529-8EA7-4D21-B6E6-3E2D4A2C909C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2454A529-8EA7-4D21-B6E6-3E2D4A2C909C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2454A529-8EA7-4D21-B6E6-3E2D4A2C909C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44E85AA6-2C80-4046-88E2-04F0A797319C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44E85AA6-2C80-4046-88E2-04F0A797319C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44E85AA6-2C80-4046-88E2-04F0A797319C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44E85AA6-2C80-4046-88E2-04F0A797319C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16545779-AFAB-4D20-895C-83F92F6E49C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16545779-AFAB-4D20-895C-83F92F6E49C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16545779-AFAB-4D20-895C-83F92F6E49C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16545779-AFAB-4D20-895C-83F92F6E49C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{885BE6FB-A247-4231-87E7-FD57A42895F2} = {8145E8DC-8CA3-4BDD-96BE-7C3DA3486127}
+		{2454A529-8EA7-4D21-B6E6-3E2D4A2C909C} = {8145E8DC-8CA3-4BDD-96BE-7C3DA3486127}
+		{44E85AA6-2C80-4046-88E2-04F0A797319C} = {8C79C6CF-7975-439C-A6AE-F9637A394788}
+		{16545779-AFAB-4D20-895C-83F92F6E49C6} = {8C79C6CF-7975-439C-A6AE-F9637A394788}
 	EndGlobalSection
 EndGlobal
