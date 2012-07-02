@@ -19,21 +19,29 @@ namespace az.tweetstore.tests
 
             var repo = new Repository(TEST_REPO_PATH);
 
-            var va = new Versandauftrag() { Text = "a", Termin = new DateTime(2012, 6, 21), Id = Guid.NewGuid().ToString() };
-            repo.Store(va, null);
+            var va1 = new Versandauftrag() { Text = "a", Termin = new DateTime(2012, 6, 21), Id = Guid.NewGuid().ToString() };
+            repo.Store(va1, null);
             var endOfStream = false;
-            va = new Versandauftrag() { Text = "b", Termin = new DateTime(2012, 6, 20), Id = Guid.NewGuid().ToString() };
-            repo.Store(va, null);
+            var va2 = new Versandauftrag() { Text = "b", Termin = new DateTime(2012, 6, 20), Id = Guid.NewGuid().ToString() };
+            repo.Store(va2, null);
             repo.Store(null, () => endOfStream = true);
             Assert.IsTrue(endOfStream);
             endOfStream = false;
 
-            var results = new List<Versandauftrag>();
-            repo.Load(results.Add);
+            var results = new List<string>();
+            repo.List(results.Add);
 
-            Assert.That(results.Select(r => r == null ? null : r.Text).ToArray(), Is.EquivalentTo(new[] { "a", "b", null }));
+            Assert.That(results.Select(fn => fn==null ? null : Path.GetFileName(fn)).ToArray(), 
+                        Is.EquivalentTo(new[] { va1.Id + ".tweet", va2.Id + ".tweet", null }));
 
-            results.ForEach(r => repo.Delete(r == null ? null : r.Id, () => endOfStream = true));
+            var resultTexts = new List<Versandauftrag>();
+            foreach(var fn in results)
+                repo.Load(fn, resultTexts.Add);
+
+            Assert.That(resultTexts.Select(_ => _==null ? null : _.Text).ToArray(), 
+                                           Is.EquivalentTo(new[]{"a", "b", null}));
+
+            results.ForEach(fn => repo.Delete(fn, () => endOfStream = true));
 
             Assert.AreEqual(0, Directory.GetFiles(TEST_REPO_PATH).Length);
             Assert.IsTrue(endOfStream);

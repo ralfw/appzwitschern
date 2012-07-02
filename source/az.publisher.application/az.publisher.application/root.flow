@@ -1,5 +1,6 @@
 ﻿/
-.start, load
+.start, list,
+list, load
 load, filtern
 filtern, versenden
 versenden, delete

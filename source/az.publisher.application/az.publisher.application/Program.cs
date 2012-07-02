@@ -27,7 +27,8 @@ namespace az.publisher.application
             _config = new FlowRuntimeConfiguration()
                 .AddStreamsFrom("az.publisher.application.root.flow", Assembly.GetExecutingAssembly())
 
-                .AddAction<Versandauftrag>("load", repository.Load)
+                .AddAction<string>("list", repository.List)
+                .AddAction<string, Versandauftrag>("load", repository.Load)
                 .AddFunc<Versandauftrag, string>("versenden", twitterOperations.Versenden)
                 .AddAction<string>("delete", repository.Delete)
 

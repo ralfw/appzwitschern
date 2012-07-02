@@ -133,7 +133,6 @@ namespace az.tweetstore.ftp.adapter
             // Created needed paths
             for (createIndex++; createIndex >= 0 && createIndex < paths.Count; createIndex++)
             {
-                Console.WriteLine("create {0}", paths[createIndex]);
                 var request = GetRequest(paths[createIndex]);
                 request.Method = WebRequestMethods.Ftp.MakeDirectory;
                 var response = (FtpWebResponse)request.GetResponse();

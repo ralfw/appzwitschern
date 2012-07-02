@@ -8,7 +8,8 @@ namespace az.contracts
     public interface IRepository
     {
         void Store(Versandauftrag versandauftrag, Action onEndOfStream);
-        void Load(Action<Versandauftrag> onLoaded);
-        void Delete(string versandauftragId, Action onEndOfStream);
+        void List(Action<string> onListed);
+        void Load(string persistentId, Action<Versandauftrag> onLoaded);
+        void Delete(string persistentId, Action onEndOfStream);
     }
 }

@@ -34,22 +34,28 @@ namespace az.tweetstore
         }
 
 
-        public void Load(Action<Versandauftrag> onLoaded)
+        public void List(Action<string> onListed)
         {
-            foreach(var filename in Directory.GetFiles(_repoFolderPath))
-            {
-                var data = File.ReadAllText(Build_filename(Path.GetFileNameWithoutExtension(filename)));
-                var versandauftrag = _serialization.Deserialize(data);
-                onLoaded(versandauftrag);
-            }
-            onLoaded(null);
+            foreach (var filename in Directory.GetFiles(_repoFolderPath))
+                onListed(filename);
+            onListed(null);
         }
 
 
-        public void Delete(string versandauftragId, Action onEndOfStream)
+        public void Load(string persistentId, Action<Versandauftrag> onLoaded)
         {
-            if (versandauftragId != null)
-                File.Delete(Build_filename(versandauftragId));
+            if (persistentId == null) { onLoaded(null); return; }
+
+            var data = File.ReadAllText(persistentId);
+            var versandauftrag = _serialization.Deserialize(data);
+            onLoaded(versandauftrag);
+        }
+
+
+        public void Delete(string persistentId, Action onEndOfStream)
+        {
+            if (persistentId != null)
+                File.Delete(persistentId);
             else
                 onEndOfStream();
         }

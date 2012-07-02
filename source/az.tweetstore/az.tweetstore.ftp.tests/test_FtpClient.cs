@@ -12,10 +12,13 @@ namespace az.tweetstore.ftp.tests
     [TestFixture]
     public class test_FtpClient
     {
+        private const string SERVER = "ftp://ftp.ralfw.domainfactory-kunde.de";
+
+
         [Test]
         public void Create_AppZwitscher_directory()
         {
-            var sut = new FtpClient("ftp://ftp.ralfw.domainfactory-kunde.de", TokenRepository.LoadFrom("ftp.credentials.txt"));
+            var sut = new FtpClient(SERVER, TokenRepository.LoadFrom("ftp.credentials.txt"));
 
             sut.CreateDirectory("/AppZwitschern/TweetStore");
 
@@ -32,7 +35,7 @@ namespace az.tweetstore.ftp.tests
         [Test]
         public void Upload_file()
         {
-            var sut = new FtpClient("ftp://ftp.ralfw.domainfactory-kunde.de", TokenRepository.LoadFrom("ftp.credentials.txt"));
+            var sut = new FtpClient(SERVER, TokenRepository.LoadFrom("ftp.credentials.txt"));
             sut.ChangeDirectory("/AppZwitschern/TweetStore");
 
             sut.UploadFiles("a.txt");
@@ -45,7 +48,7 @@ namespace az.tweetstore.ftp.tests
         [Test]
         public void Delete_file()
         {
-            var sut = new FtpClient("ftp://ftp.ralfw.domainfactory-kunde.de", TokenRepository.LoadFrom("ftp.credentials.txt"));
+            var sut = new FtpClient(SERVER, TokenRepository.LoadFrom("ftp.credentials.txt"));
             sut.ChangeDirectory("/AppZwitschern/TweetStore");
 
             sut.UploadFiles("a.txt");
@@ -59,7 +62,7 @@ namespace az.tweetstore.ftp.tests
         {
             if (!Directory.Exists("download")) Directory.CreateDirectory("download");
 
-            var sut = new FtpClient("ftp://ftp.ralfw.domainfactory-kunde.de", TokenRepository.LoadFrom("ftp.credentials.txt"));
+            var sut = new FtpClient(SERVER, TokenRepository.LoadFrom("ftp.credentials.txt"));
             sut.ChangeDirectory("/AppZwitschern/TweetStore");
    
             sut.UploadFiles("a.txt");
@@ -73,7 +76,7 @@ namespace az.tweetstore.ftp.tests
         [Test]
         public void List_files()
         {
-            var sut = new FtpClient("ftp://ftp.ralfw.domainfactory-kunde.de", TokenRepository.LoadFrom("ftp.credentials.txt"));
+            var sut = new FtpClient(SERVER, TokenRepository.LoadFrom("ftp.credentials.txt"));
             sut.ChangeDirectory("/AppZwitschern/TweetStore");
    
             sut.UploadFiles("a.txt", "b.txt");
