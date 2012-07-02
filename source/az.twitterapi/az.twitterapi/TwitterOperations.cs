@@ -10,14 +10,14 @@ namespace az.twitterapi
             return versandauftrag;
         }
 
-        public string Versenden(Versandauftrag versandauftrag) {
+        public Versandauftrag Versenden(Versandauftrag versandauftrag) {
             if (versandauftrag == null) return null;
 
             var twitter = new Twitter(TokenRepository.LoadFrom("twitter.consumer.token.txt"));
 
             twitter.SendMessage(versandauftrag.Text, versandauftrag.Credentials.Key, versandauftrag.Credentials.Secret);
 
-            return versandauftrag.Id;
+            return versandauftrag;
         }
     }
 }

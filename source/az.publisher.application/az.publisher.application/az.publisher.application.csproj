@@ -67,6 +67,7 @@
   <ItemGroup>
     <Reference Include="az.contracts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="az.tweetstore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="az.tweetstore.ftp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="az.twitterapi, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="npantarhei.runtime, Version=1.0.4556.35760, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\lib\npantarhei.runtime.dll</HintPath>
@@ -87,11 +88,17 @@
     <EmbeddedResource Include="root.flow" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\..\..\unversioned\ftp.credentials.txt">
+      <Link>ftp.credentials.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="..\..\..\unversioned\twitter.access.token.txt">
       <Link>twitter.access.token.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\..\..\unversioned\twitter.consumer.token.txt">
       <Link>twitter.consumer.token.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

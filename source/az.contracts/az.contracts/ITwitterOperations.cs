@@ -8,6 +8,6 @@ namespace az.contracts
     public interface ITwitterOperations
     {
         Versandauftrag Versandauftrag_um_access_token_erweitern(Versandauftrag versandauftrag);
-        string Versenden(Versandauftrag versandauftrag);
+        Versandauftrag Versenden(Versandauftrag versandauftrag);
     }
 }

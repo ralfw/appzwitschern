@@ -34,14 +34,14 @@ namespace az.tweetstore.tests
             Assert.That(results.Select(fn => fn==null ? null : Path.GetFileName(fn)).ToArray(), 
                         Is.EquivalentTo(new[] { va1.Id + ".tweet", va2.Id + ".tweet", null }));
 
-            var resultTexts = new List<Versandauftrag>();
+            var resultVAs = new List<Versandauftrag>();
             foreach(var fn in results)
-                repo.Load(fn, resultTexts.Add);
+                repo.Load(fn, resultVAs.Add);
 
-            Assert.That(resultTexts.Select(_ => _==null ? null : _.Text).ToArray(), 
+            Assert.That(resultVAs.Select(_ => _==null ? null : _.Text).ToArray(), 
                                            Is.EquivalentTo(new[]{"a", "b", null}));
 
-            results.ForEach(fn => repo.Delete(fn, () => endOfStream = true));
+            resultVAs.ForEach(va => repo.Delete(va, () => endOfStream = true));
 
             Assert.AreEqual(0, Directory.GetFiles(TEST_REPO_PATH).Length);
             Assert.IsTrue(endOfStream);

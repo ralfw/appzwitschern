@@ -4,21 +4,24 @@ using az.contracts;
 using az.ironmqapi;
 using az.security;
 using az.serialization;
-using az.tweetstore;
 using npantarhei.runtime;
 
 namespace az.receiver.application
 {
     internal static class Program
     {
-        private static void Main(string[] args) {
+        private static void Main(string[] args)
+        {
+            //var repo = new az.tweetstore.Repository();
+            var repo = new az.tweetstore.ftp.Repository();
+
             var frc = new FlowRuntimeConfiguration()
                        .AddStreamsFrom("az.receiver.application.root.flow", Assembly.GetExecutingAssembly())
 
                        .AddAction<string>("dequeue", new IronMQOperations("AppZwitschern", TokenRepository.LoadFrom("ironmq.credentials.txt")).Dequeue)
                        
                        .AddFunc<string, Versandauftrag>("deserialize", new Serialization<Versandauftrag>().Deserialize)
-                       .AddAction<Versandauftrag>("speichern", new Repository().Store);
+                       .AddAction<Versandauftrag>("speichern", repo.Store);
             
             using(var fr = new FlowRuntime(frc)) {
                 fr.Message += Console.WriteLine;

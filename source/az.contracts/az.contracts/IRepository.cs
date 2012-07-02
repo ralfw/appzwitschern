@@ -10,6 +10,6 @@ namespace az.contracts
         void Store(Versandauftrag versandauftrag, Action onEndOfStream);
         void List(Action<string> onListed);
         void Load(string persistentId, Action<Versandauftrag> onLoaded);
-        void Delete(string persistentId, Action onEndOfStream);
+        void Delete(Versandauftrag versandauftrag, Action onEndOfStream);
     }
 }

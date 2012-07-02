@@ -2,7 +2,6 @@
 using System.IO;
 using System.Reflection;
 using az.contracts;
-using az.tweetstore;
 using az.twitterapi;
 using npantarhei.runtime;
 
@@ -12,7 +11,9 @@ namespace az.publisher.application
     {
         private static void Main(string[] args)
         {
-            var publisher = new Publisher(new Repository(), new TwitterOperations());
+            //var repo = new az.tweetstore.Repository();
+            var repo = new az.tweetstore.ftp.Repository();
+            var publisher = new Publisher(repo, new TwitterOperations());
             publisher.Run();
         }
     }
@@ -29,8 +30,8 @@ namespace az.publisher.application
 
                 .AddAction<string>("list", repository.List)
                 .AddAction<string, Versandauftrag>("load", repository.Load)
-                .AddFunc<Versandauftrag, string>("versenden", twitterOperations.Versenden)
-                .AddAction<string>("delete", repository.Delete)
+                .AddFunc<Versandauftrag, Versandauftrag>("versenden", twitterOperations.Versenden)
+                .AddAction<Versandauftrag>("delete", repository.Delete)
 
                 .AddAction<Versandauftrag, Versandauftrag>("filtern", this.Filtern);
         }
@@ -38,7 +39,9 @@ namespace az.publisher.application
 
         public void Run()
         {
-            using (var fr = new FlowRuntime(_config)) {
+            using (var fr = new FlowRuntime(_config))
+            {
+                fr.Message += Console.WriteLine;
                 fr.UnhandledException += e => Console.WriteLine(e.InnerException.Message);
 
                 fr.Process(".start");
