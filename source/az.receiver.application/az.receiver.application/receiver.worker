@@ -1,0 +1,4 @@
+runtime 'binary'
+
+exec 'receiver.sh'
+dir '.'

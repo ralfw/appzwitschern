@@ -25,7 +25,11 @@ namespace az.receiver.application
             
             using(var fr = new FlowRuntime(frc)) {
                 fr.Message += Console.WriteLine;
-                fr.UnhandledException += e => Console.WriteLine(e.InnerException.Message);
+                fr.UnhandledException += e =>
+                                                {
+                                                    Console.WriteLine(e.InnerException);
+                                                    fr.Process(".stop");
+                                                };
 
                 fr.Process(".start");
                 fr.WaitForResult();

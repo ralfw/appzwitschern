@@ -22,7 +22,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\bin\</OutputPath>
+    <OutputPath>..\..\..\bin\client\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -41,7 +41,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\..\..\bin\</OutputPath>
+    <OutputPath>..\..\..\bin\client\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -87,7 +87,9 @@
     <Reference Include="az.serialization">
       <HintPath>..\..\..\bin\az.serialization.dll</HintPath>
     </Reference>
-    <Reference Include="az.tinyurlapi, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="az.tinyurlapi">
+      <HintPath>..\..\..\bin\az.tinyurlapi.dll</HintPath>
+    </Reference>
     <Reference Include="az.twitterapi">
       <HintPath>..\..\..\bin\az.twitterapi.dll</HintPath>
     </Reference>

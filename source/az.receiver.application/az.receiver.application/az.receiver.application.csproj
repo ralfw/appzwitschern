@@ -36,7 +36,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\..\..\bin\</OutputPath>
+    <OutputPath>..\..\..\bin\receiver\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -99,14 +99,26 @@
     <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="az.contracts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="az.ironmqapi, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="az.security, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="az.serialization, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="az.tweetstore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="az.tweetstore.ftp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="npantarhei.runtime, Version=1.0.4555.27577, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="az.contracts">
+      <HintPath>..\..\..\bin\az.contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="az.ironmqapi">
+      <HintPath>..\..\..\bin\az.ironmqapi.dll</HintPath>
+    </Reference>
+    <Reference Include="az.security">
+      <HintPath>..\..\..\bin\az.security.dll</HintPath>
+    </Reference>
+    <Reference Include="az.serialization">
+      <HintPath>..\..\..\bin\az.serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="az.tweetstore">
+      <HintPath>..\..\..\bin\az.tweetstore.dll</HintPath>
+    </Reference>
+    <Reference Include="az.tweetstore.ftp">
+      <HintPath>..\..\..\bin\az.tweetstore.ftp.dll</HintPath>
+    </Reference>
+    <Reference Include="npantarhei.runtime">
+      <HintPath>..\..\..\lib\npantarhei.runtime.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -134,7 +146,17 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\..\unversioned\iron.json">
+      <Link>iron.json</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="app.config" />
+    <None Include="receiver.sh">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="receiver.worker">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -256,8 +256,8 @@ namespace az.tweetstore.ftp.adapter
             var url = _host.GetUrl(filename);
             var request = WebRequest.Create(url) as FtpWebRequest;
             request.Credentials = new NetworkCredential(Username, Password);
-            request.Proxy = null;
-            request.KeepAlive = false;
+            //request.Proxy = null;
+            //request.KeepAlive = false;
             return request;
         }
 

@@ -35,7 +35,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\..\..\bin\</OutputPath>
+    <OutputPath>..\..\..\bin\publisher\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -65,10 +65,18 @@
     <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="az.contracts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="az.tweetstore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="az.tweetstore.ftp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="az.twitterapi, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="az.contracts">
+      <HintPath>..\..\..\bin\az.contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="az.tweetstore">
+      <HintPath>..\..\..\bin\az.tweetstore.dll</HintPath>
+    </Reference>
+    <Reference Include="az.tweetstore.ftp">
+      <HintPath>..\..\..\bin\az.tweetstore.ftp.dll</HintPath>
+    </Reference>
+    <Reference Include="az.twitterapi">
+      <HintPath>..\..\..\bin\az.twitterapi.dll</HintPath>
+    </Reference>
     <Reference Include="npantarhei.runtime, Version=1.0.4556.35760, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\lib\npantarhei.runtime.dll</HintPath>
     </Reference>

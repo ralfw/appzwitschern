@@ -1,5 +1,7 @@
 /
 .start, dequeue
+.stop, .exit
+
 dequeue, deserialize
 deserialize, speichern
 speichern, .exit
