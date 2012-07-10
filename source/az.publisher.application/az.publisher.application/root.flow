@@ -1,5 +1,6 @@
 ﻿/
-.start, list,
+.start, list
+.stop, .exit
 list, load
 load, filtern
 filtern, versenden

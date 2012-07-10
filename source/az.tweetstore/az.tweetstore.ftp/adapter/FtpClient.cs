@@ -347,10 +347,12 @@ namespace az.tweetstore.ftp.adapter
         // dr-xr-xr-x   1 owner    group               0 Nov 25  2002 bussys
         protected FtpDirectoryEntry ParseUnixDirectoryListing(string text)
         {
+            Console.WriteLine("::{0}", text);
+
             // Assuming record style as
             // dr-xr-xr-x   1 owner    group               0 Nov 25  2002 bussys
-            FtpDirectoryEntry entry = new FtpDirectoryEntry();
-            string processstr = text.Trim();
+            var entry = new FtpDirectoryEntry();
+            var processstr = text.Trim();
             entry.Flags = processstr.Substring(0, 9);
             entry.IsDirectory = (entry.Flags[0] == 'd');
             processstr = (processstr.Substring(11)).Trim();
@@ -358,7 +360,10 @@ namespace az.tweetstore.ftp.adapter
             entry.Owner = CutSubstringWithTrim(ref processstr, ' ', 0);
             entry.Group = CutSubstringWithTrim(ref processstr, ' ', 0);
             CutSubstringWithTrim(ref processstr, ' ', 0);   //skip one part
-            entry.CreateTime = DateTime.Parse(CutSubstringWithTrim(ref processstr, ' ', 8));
+            try
+            {
+                entry.CreateTime = DateTime.Parse(CutSubstringWithTrim(ref processstr, ' ', 8));
+            } catch {}
             entry.Name = processstr;   //Rest of the part is name
             return entry;
         }

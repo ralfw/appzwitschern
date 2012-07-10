@@ -12,13 +12,13 @@ namespace az.ironmqapi
         public IronMQOperations(string queueName, Token credentials)
         {
             _client = new Client(credentials.Key, credentials.Secret);
-            _queue = _client.queue(queueName);
+            _queue = _client.Queue(queueName);
         }
 
 
         public void Enqueue(string data)
         {
-            _queue.push(data);
+            _queue.Enqueue(data);
         }
 
 
@@ -26,12 +26,12 @@ namespace az.ironmqapi
         {
             do
             {
-                var msg = _queue.get();
+                var msg = _queue.Dequeue();
                 if (msg == null) break;
 
                 onDataReceived(msg.Body);
 
-                _queue.deleteMessage(msg);
+                _queue.Delete(msg);
             } while (true);
 
             onDataReceived(null);

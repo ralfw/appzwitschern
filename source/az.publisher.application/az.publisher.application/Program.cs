@@ -42,7 +42,11 @@ namespace az.publisher.application
             using (var fr = new FlowRuntime(_config))
             {
                 fr.Message += Console.WriteLine;
-                fr.UnhandledException += e => Console.WriteLine(e.InnerException.Message);
+                fr.UnhandledException += e => 
+                                                { 
+                                                    Console.WriteLine(e.InnerException);
+                                                    fr.Process(".stop");
+                                                };
 
                 fr.Process(".start");
                 fr.WaitForResult();

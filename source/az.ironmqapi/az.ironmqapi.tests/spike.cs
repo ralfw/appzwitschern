@@ -16,9 +16,9 @@ namespace az.ironmqapi.tests
         {
             var credentials = TokenRepository.LoadFrom("ironmq.credentials.txt");
             var client = new Client(credentials.Key, credentials.Secret);
-            var queue = client.queue("AppZwitschern");
+            var queue = client.Queue("AppZwitschern");
 
-            var msg = queue.get();
+            var msg = queue.Dequeue();
 
             Assert.IsNull(msg);
         }

@@ -12,7 +12,6 @@ namespace az.receiver.application
     {
         private static void Main(string[] args)
         {
-            //var repo = new az.tweetstore.Repository();
             var repo = new az.tweetstore.ftp.Repository();
 
             var frc = new FlowRuntimeConfiguration()

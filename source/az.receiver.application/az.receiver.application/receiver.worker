@@ -1,4 +1,4 @@
-runtime 'binary'
+runtime 'mono'
 
-exec 'receiver.sh'
+exec 'az.receiver.application.exe'
 dir '.'

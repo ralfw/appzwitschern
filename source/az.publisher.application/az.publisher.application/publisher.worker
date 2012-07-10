@@ -1,0 +1,4 @@
+runtime 'mono'
+
+exec 'az.publisher.application.exe'
+dir '.'
