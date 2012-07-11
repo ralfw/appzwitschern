@@ -49,7 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="test_FtpClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="test_Repository.cs" />
   </ItemGroup>

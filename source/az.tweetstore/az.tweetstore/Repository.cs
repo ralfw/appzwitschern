@@ -65,5 +65,8 @@ namespace az.tweetstore
         {
             return _repoFolderPath + @"\" + versandauftrag.Id + ".tweet";
         }
+
+
+        public void Dispose() {}
     }
 }

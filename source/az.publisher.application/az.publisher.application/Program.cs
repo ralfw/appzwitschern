@@ -11,10 +11,11 @@ namespace az.publisher.application
     {
         private static void Main(string[] args)
         {
-            //var repo = new az.tweetstore.Repository();
-            var repo = new az.tweetstore.ftp.Repository();
-            var publisher = new Publisher(repo, new TwitterOperations());
-            publisher.Run();
+            using (var repo = new az.tweetstore.ftp.Repository())
+            {
+                var publisher = new Publisher(repo, new TwitterOperations());
+                publisher.Run();
+            }
         }
     }
 

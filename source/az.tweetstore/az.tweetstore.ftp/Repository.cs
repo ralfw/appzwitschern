@@ -1,30 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
+using AlexPilotti.FTPS.Client;
 using az.contracts;
 using az.serialization;
 using az.security;
-using az.tweetstore.ftp.adapter;
 using System.IO;
 
 namespace az.tweetstore.ftp
 {
     public class Repository : IRepository
     {
-        private readonly FtpClient _ftp;
+        // FTP Library: http://ftps.codeplex.com/releases/view/72012
+        private readonly FTPSClient _ftp;
 
 
         private readonly Serialization<Versandauftrag> _serialization = new Serialization<Versandauftrag>();
 
-        public Repository() : this("ftp://ftp.ralfw.domainfactory-kunde.de", TokenRepository.LoadFrom("ftp.credentials.txt"), "/AppZwitschern/TweetStore") {}
+        public Repository() : this("ftp.ralfw.domainfactory-kunde.de", TokenRepository.LoadFrom("ftp.credentials.txt"), "AppZwitschern_TweetStore") {}
         public Repository(string host, Token token, string repoFolderPath)
         {
-            _ftp = new FtpClient(host, token);
+            _ftp = new FTPSClient();
+            _ftp.Connect(host, 
+                         new NetworkCredential(token.Key, token.Secret),
+                         ESSLSupportMode.ClearText);
 
-            if (!repoFolderPath.StartsWith("/")) repoFolderPath = "/" + repoFolderPath;
-            _ftp.CreateDirectory(repoFolderPath);
-            _ftp.ChangeDirectory(repoFolderPath);
+            try
+            {
+                _ftp.MakeDir(repoFolderPath);
+            }
+            catch {}
+            _ftp.SetCurrentDirectory(repoFolderPath);
         }
 
 
@@ -38,7 +46,7 @@ namespace az.tweetstore.ftp
             File.WriteAllText(filename, data);
             try
             {
-                _ftp.UploadFiles(filename);
+                _ftp.PutFile(filename, filename);
             }
             finally
             {
@@ -49,7 +57,7 @@ namespace az.tweetstore.ftp
 
         public void List(Action<string> onListed)
         {
-            foreach (var dirEntry in _ftp.ListDirectory())
+            foreach (var dirEntry in _ftp.GetDirectoryList().Where(dli => !dli.IsDirectory))
                 onListed(dirEntry.Name);
             onListed(null);
         }
@@ -59,7 +67,8 @@ namespace az.tweetstore.ftp
         {
             if (persistentId == null) { onLoaded(null); return; }
 
-            _ftp.DownloadFiles("", persistentId);
+            _ftp.GetFile(persistentId, persistentId);
+
             var data = File.ReadAllText(persistentId);
             File.Delete(persistentId);
             var versandauftrag = _serialization.Deserialize(data);
@@ -70,7 +79,7 @@ namespace az.tweetstore.ftp
         public void Delete(Versandauftrag versandauftrag, Action onEndOfStream)
         {
             if (versandauftrag != null)
-                _ftp.DeleteFiles(Build_filename(versandauftrag));
+                _ftp.DeleteFile(Build_filename(versandauftrag));
             else
                 onEndOfStream();
         }
@@ -80,6 +89,12 @@ namespace az.tweetstore.ftp
         {
             var datum = versandauftrag.Termin.ToString("s").Replace("-", "").Replace(":", "");
             return string.Format("{0:s}-{1}.tweet", datum, versandauftrag.Id);
+        }
+
+
+        public void Dispose()
+        {
+            _ftp.Dispose();
         }
     }
 }

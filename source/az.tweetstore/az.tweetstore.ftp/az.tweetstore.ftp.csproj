@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AlexPilotti.FTPS.Client">
+      <HintPath>..\..\..\lib\AlexFTPLib\AlexPilotti.FTPS.Client.dll</HintPath>
+    </Reference>
     <Reference Include="az.contracts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="az.security">
       <HintPath>..\..\..\bin\az.security.dll</HintPath>
@@ -44,10 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="adapter\FtpClient.cs" />
-    <Compile Include="adapter\FtpDirectory.cs" />
-    <Compile Include="adapter\FtpDirectoryEntry.cs" />
-    <Compile Include="adapter\FtpDirectoryFormats.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

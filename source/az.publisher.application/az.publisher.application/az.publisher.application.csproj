@@ -11,7 +11,8 @@
     <RootNamespace>az.publisher.application</RootNamespace>
     <AssemblyName>az.publisher.application</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -114,6 +115,7 @@
       <Link>iron.json</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="app.config" />
     <None Include="publisher.worker">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

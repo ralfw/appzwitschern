@@ -5,7 +5,7 @@ using System.Text;
 
 namespace az.contracts
 {
-    public interface IRepository
+    public interface IRepository : IDisposable
     {
         void Store(Versandauftrag versandauftrag, Action onEndOfStream);
         void List(Action<string> onListed);
