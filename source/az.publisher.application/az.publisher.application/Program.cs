@@ -4,6 +4,7 @@ using System.Reflection;
 using az.contracts;
 using az.twitterapi;
 using npantarhei.runtime;
+using npantarhei.runtime.messagetypes;
 
 namespace az.publisher.application
 {
@@ -46,7 +47,7 @@ namespace az.publisher.application
                 fr.UnhandledException += e => 
                                                 { 
                                                     Console.WriteLine(e.InnerException);
-                                                    fr.Process(".stop");
+                                                    fr.Process(new Message(".stop") {Priority = 99});
                                                 };
 
                 fr.Process(".start");

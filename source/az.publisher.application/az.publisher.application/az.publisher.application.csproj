@@ -78,7 +78,8 @@
     <Reference Include="az.twitterapi">
       <HintPath>..\..\..\bin\az.twitterapi.dll</HintPath>
     </Reference>
-    <Reference Include="npantarhei.runtime, Version=1.0.4556.35760, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="npantarhei.runtime, Version=1.0.4575.35447, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\lib\npantarhei.runtime.dll</HintPath>
     </Reference>
     <Reference Include="System" />

@@ -11,7 +11,7 @@ namespace az.ironmqapi
 
         public IronMQOperations(string queueName, Token credentials)
         {
-            _client = new Client(credentials.Key, credentials.Secret);
+            _client = new Client(credentials.Key, credentials.Secret, proto:"http", port:80);
             _queue = _client.Queue(queueName);
         }
 

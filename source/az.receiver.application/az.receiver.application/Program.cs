@@ -5,6 +5,7 @@ using az.ironmqapi;
 using az.security;
 using az.serialization;
 using npantarhei.runtime;
+using npantarhei.runtime.messagetypes;
 
 namespace az.receiver.application
 {
@@ -30,7 +31,7 @@ namespace az.receiver.application
                     fr.UnhandledException += e =>
                                                  {
                                                      Console.WriteLine(e.InnerException);
-                                                     fr.Process(".stop");
+                                                     fr.Process(new Message(".stop") { Priority = 99 });
                                                  };
 
                     fr.Process(".start");
